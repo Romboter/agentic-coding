@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "description": "Configuration for conditional loading of rule files",
+  "core_rules": [
+    {
+      "file": "sams-main-clinerules-optimized.xml",
+      "required": true,
+      "description": "Core principles and coding standards",
+      "load_priority": 1
+    }
+  ],
+  "context_dependent_rules": [
+    {
+      "file": "new-task-rules-optimized.md",
+      "required": true,
+      "description": "Context window management and task handoff",
+      "load_priority": 2,
+      "conditions": {
+        "context_window_usage": "> 50%",
+        "task_complexity": "high"
+      }
+    },
+    {
+      "file": "tools-and-file-operations-optimized.xml",
+      "required": true,
+      "description": "Tool usage and file operations",
+      "load_priority": 2,
+      "conditions": {
+        "task_type": ["coding", "file_manipulation", "system_operations"]
+      }
+    },
+    {
+      "file": "mermaid-rules-optimized.xml",
+      "required": false,
+      "description": "Mermaid diagram formatting",
+      "load_priority": 3,
+      "conditions": {
+        "task_type": ["diagramming", "planning"],
+        "contains_mermaid": true
+      }
+    },
+    {
+      "file": "repeat-back-rules.xml",
+      "required": false,
+      "description": "Rule verification process",
+      "load_priority": 4,
+      "conditions": {
+        "new_conversation": true,
+        "task_complexity": "high"
+      }
+    },
+    {
+      "file": "spelling-rules.xml",
+      "required": true,
+      "description": "Spelling standards",
+      "load_priority": 3,
+      "conditions": {
+        "output_type": ["document", "code_comments", "user_facing_text"]
+      }
+    }
+  ],
+  "language_specific_rules": {
+    "golang": [
+      {
+        "section": "LANGUAGE_SPECIFIC_RULES.GOLANG",
+        "file": "sams-main-clinerules-optimized.xml",
+        "load_priority": 2
+      }
+    ],
+    "docker": [
+      {
+        "section": "LANGUAGE_SPECIFIC_RULES.DOCKER",
+        "file": "sams-main-clinerules-optimized.xml",
+        "load_priority": 2
+      }
+    ]
+  },
+  "loading_strategy": {
+    "default": "load_all_required",
+    "low_context_window": "load_core_only",
+    "high_context_window": "load_required_and_relevant"
+  },
+  "rule_dependencies": {
+    "new-task-rules-optimized.md": ["sams-main-clinerules-optimized.xml", "mermaid-rules-optimized.xml"],
+    "spelling-rules.xml": ["sams-main-clinerules-optimized.xml"]
+  },
+  "implementation_notes": [
+    "This configuration is a blueprint for a conditional loading mechanism",
+    "The actual implementation would require system-level changes",
+    "Rules are categorized as core, context-dependent, or language-specific",
+    "Loading priority determines the order in which rules are loaded",
+    "Conditions specify when context-dependent rules should be loaded",
+    "Loading strategies define different approaches based on context window usage"
+  ]
+}

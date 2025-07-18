@@ -1,0 +1,46 @@
+<TOOLS_AND_FILE_OPERATIONS>
+  <!-- File Operation Rules -->
+  <FILE_OPERATIONS>
+    <RULE id="FO001">Check existing project files before suggesting structural changes</RULE>
+    <RULE id="FO002">Complete multiple changes file efficiently</RULE>
+  </FILE_OPERATIONS>
+
+  <!-- Available File Operation Tools -->
+  <FILE_OPERATION_TOOLS>
+    <TOOL name="write_to_file">Create or overwrite files</TOOL>
+    <TOOL name="read_file">Read file contents</TOOL>
+    <TOOL name="replace_in_file">Make targeted edits to files</TOOL>
+    <TOOL name="search_files">Search files using regex</TOOL>
+    <TOOL name="list_files">List directory contents</TOOL>
+  </FILE_OPERATION_TOOLS>
+
+  <!-- Other Useful Tools -->
+  <ADDITIONAL_TOOLS>
+    <TOOL name="fetch_url">
+      <WHEN>Needing to fetch content from a URL</WHEN>
+    </TOOL>
+    <TOOL name="resolve_library_id, get_library_docs">
+      <WHEN>Researching or implementing complex packages/libraries</WHEN>
+      <PURPOSE>Access up-to-date documentation and implementation patterns</PURPOSE>
+    </TOOL>
+    <TOOL name="search_packages">
+      <WHEN>Adding or updating packages/libraries</WHEN>
+      <PURPOSE>Get the latest stable versions to use</PURPOSE>
+    </TOOL>
+    <TOOL name="internet_search">
+      <WHEN>Searching for information or solutions not found in existing tools</WHEN>
+      <PURPOSE>Find relevant information, documentation, or solutions</PURPOSE>
+    </TOOL>
+    <TOOL name="think">
+      <WHEN>Encountering complex problems requiring intermediate reasoning</WHEN>
+      <PURPOSE>Document thought process and solve complex issues</PURPOSE>
+    </TOOL>
+  </ADDITIONAL_TOOLS>
+
+  <!-- Best Practices -->
+  <BEST_PRACTICES>
+    <PRACTICE>Always consider available tools before manual approaches</PRACTICE>
+    <PRACTICE>Use tools efficiently for accuracy and productivity</PRACTICE>
+    <PRACTICE>When editing files, use the appropriate file operation tool</PRACTICE>
+  </BEST_PRACTICES>
+</TOOLS_AND_FILE_OPERATIONS>
